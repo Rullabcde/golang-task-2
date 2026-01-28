@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"category-api/internal/entity"
-	"category-api/internal/service"
+	"category-api/entity"
+	"category-api/service"
 
 	"github.com/gorilla/mux"
 )

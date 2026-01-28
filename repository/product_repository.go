@@ -3,8 +3,8 @@ package repository
 import (
 	"context"
 
-	"category-api/internal/config"
-	"category-api/internal/entity"
+	"category-api/config"
+	"category-api/entity"
 )
 
 type ProductRepository interface {

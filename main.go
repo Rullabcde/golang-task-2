@@ -4,10 +4,10 @@ import (
 	"log"
 	"net/http"
 
-	"category-api/internal/config"
-	"category-api/internal/handler"
-	"category-api/internal/repository"
-	"category-api/internal/service"
+	"category-api/config"
+	"category-api/handler"
+	"category-api/repository"
+	"category-api/service"
 
 	"github.com/gorilla/mux"
 )

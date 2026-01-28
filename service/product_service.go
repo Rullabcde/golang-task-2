@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"category-api/internal/entity"
-	"category-api/internal/repository"
+	"category-api/entity"
+	"category-api/repository"
 )
 
 var ErrProductNotFound = errors.New("product not found")
