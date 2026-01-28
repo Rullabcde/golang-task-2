@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: category-postgres
+    restart: unless-stopped
+    env_file:
+      - .env.db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d category_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - category-net
+
+  category-api:
+    build: .
+    container_name: category-api
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    env_file:
+      - .env.api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - category-net
+
+networks:
+  category-net:
+    driver: bridge
+    name: category-net
+volumes:
+  postgres_data:
+    driver: local
+    name: postgres_data
